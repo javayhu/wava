@@ -1,16 +1,14 @@
-[中文说明](README-CN.md) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-wava-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3663)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-wava-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3663)
 
 ### wava
 
-> Wow, Android View Animation! (capital letter of each word forms `WAVA`)
+> Wow, Android View Animation!
 
-I wanna build another fancy Android animation library, but I was still thinking how to do that. 🐈
+我想写一个很好用的Android动画制作库，具体如何做目前还在思考中 🐈
 
-[daimajia](https://github.com/daimajia) has built an amazing library named [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations), it's really really awesome.
-
-Currently wava is just a library based on AndroidViewAnimations with many updates. Since it has changed a lot from the latest release of AndroidViewAnimations (although I tried to keep the API as same as before), I think better make another one than pulling requests.
-
-Later I will try my best to add other fancy new features to wava, star it if you have any interest. 😜
+目前做的最好的Android动画库项目是[@代码家](https://github.com/daimajia)的[AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations)，这个项目真的非常棒。   
+项目`wava`目前只是参考这个项目并对其代码进行修改和改进，后期我将添加更多有意思的功能。    
+具体什么功能请大家期待下吧，感兴趣的话可以关注这个项目哈 😜
 
 ### Sample
 
@@ -18,7 +16,7 @@ Later I will try my best to add other fancy new features to wava, star it if you
 
 ### Usage
 
-It's almost the same.
+和原项目的使用方式基本相同
 
 ```java
 YoYo.with(technique).duration(1200)
@@ -34,7 +32,7 @@ YoYo.with(technique).duration(1200)
 
 ### Setup
 
-1.add this in your `build.gradle` file in root project
+1.在项目根目录的build.gradle文件中加入
 
 ```
 allprojects {
@@ -45,7 +43,7 @@ allprojects {
 }
 ```
 
-2.add the following dependency
+2.然后在需要的build.gradle文件中加入依赖
 
 ```
 dependencies {
@@ -55,13 +53,11 @@ dependencies {
 
 ### Changes 
 
-The following are main changes from [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations):
+目前主要修改和改进的地方：
 
-1.removed deprecated [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids).
+1.去掉了过时的[NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)库（如果Android项目的`minSdkVersion="14"`可以直接使用系统提供的动画API）；
 
-New applications should use `minSdkVersion="14"` or higher which has access to the platform animation APIs.
-
-For example, animation reset no longer needs `ViewHelper`
+例如，动画恢复部分的代码就不再需要使用`ViewHelper`了
 
 ```java
 public void reset() {
@@ -78,7 +74,7 @@ public void reset() {
 }
 ```
 
-2.simplified the core `YoYo` class (including `Builder` and `YoYoString`) while keeping the original API.
+2.大幅度精简了核心类`YoYo`（包括其中的`Builder`和`YoYoString`类）内部的代码，但是只做扩展，基本保持了原有接口不变；
 
 ```java
 public static class Builder {
@@ -157,7 +153,7 @@ public static class Builder {
 }
 ```
 
-3.added supports to animation replay and animation reset after animation ends.
+3.在`BaseViewAnimator`中对增加了动画重复播放、动画结束时恢复等功能的支持，使用方式依然和以前一样简单；
 
 ```java
 public void start() {
@@ -181,20 +177,18 @@ public void start() {
 }
 ```
 
-4.replaced the original dependency [`AndroidEasingFunctions`](https://github.com/daimajia/AnimationEasingFunctions) with my another library [`yava`](https://github.com/hujiaweibujidao/yava).
+4.将原来依赖的[`AndroidEasingFunctions`](https://github.com/daimajia/AnimationEasingFunctions)替换成更加简单易用的[`yava`](https://github.com/hujiaweibujidao/yava)；
 
 ```java
 public class LandingAnimator extends BaseViewAnimator {
     @Override
     protected void prepare() {
-      //before
 //        mAnimatorSet.playTogether(
 //                Glider.glide(Skill.QuintEaseOut, mAnimatorSet.getDuration(), ObjectAnimator.ofFloat(mTarget, "scaleX", 1.5f, 1f)),
 //                Glider.glide(Skill.QuintEaseOut, mAnimatorSet.getDuration(), ObjectAnimator.ofFloat(mTarget, "scaleY", 1.5f, 1f)),
 //                Glider.glide(Skill.QuintEaseOut, mAnimatorSet.getDuration(), ObjectAnimator.ofFloat(mTarget, "alpha", 0, 1f))
 //        );
 
-        //after
         ObjectAnimator animator1 = ObjectAnimator.ofFloat(mTarget, "scaleX", 1.5f, 1f);
         animator1.setInterpolator(EasingFunction.QUINT_OUT);
         ObjectAnimator animator2 = ObjectAnimator.ofFloat(mTarget, "scaleY", 1.5f, 1f);
@@ -206,7 +200,7 @@ public class LandingAnimator extends BaseViewAnimator {
 }
 ```
 
-5.simplified all the `ViewAnimator` with easy access way to `mAnimatorSet` and `mTarget`.
+5.简化了`ViewAnimator`内部的调用`AnimatorSet`和`TargetView`的方式；
 
 ```java
 public class BounceAnimator extends BaseViewAnimator {
@@ -219,7 +213,7 @@ public class BounceAnimator extends BaseViewAnimator {
 }
 ```
 
-6.modified the effect visualization code while keeping it same as before.
+6.复制了原有的动画演示代码，略有修改，但是保证了效果如初。
 
 ### License
 
