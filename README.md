@@ -7,6 +7,24 @@
 目前做的最好的Android动画库项目是[@代码家](https://github.com/daimajia)的[AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations)，这个项目真的非常棒。   
 项目`wava`目前只是参考这个项目并对其代码进行修改和改进，后期我将添加更多有意思的功能，请期待下吧，感兴趣可以关注这个项目哈 😜
 
+### Usage
+
+和原项目的使用方式基本相同
+
+```
+YoYo.with(technique).duration(1200)
+    .interpolate(new AccelerateDecelerateInterpolator())
+    .listen(new AnimatorListenerAdapter() {
+        @Override
+        public void onAnimationCancel(Animator animation) {
+                Toast.makeText(MainActivity.this, "canceled", Toast.LENGTH_SHORT).show();
+        }
+    })
+    .playOn(mTarget);
+```
+
+### Changes 
+
 目前主要修改和改进的地方：
 
 1.去掉了过时的[NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)库（如果Android项目的`minSdkVersion="14"`可以直接使用系统提供的动画API）；
@@ -28,7 +46,7 @@ public void reset() {
 }
 ```
 
-2.大幅度精简了核心类`YoYo`（包括其中的`Builder`和`YoYoString`类）内部的代码，但是只做扩展，保持了原有接口不变；
+2.大幅度精简了核心类`YoYo`（包括其中的`Builder`和`YoYoString`类）内部的代码，但是只做扩展，基本保持了原有接口不变；
 
 ```java
 public static class Builder {
@@ -169,7 +187,26 @@ public class BounceAnimator extends BaseViewAnimator {
 
 6.复制了原有的动画演示代码，略有修改，但是保证了效果如初。
 
+### Setup
 
+1.在项目根目录的build.gradle文件中加入
+
+```
+allprojects {
+    repositories {
+        ...
+        maven { url "https://www.jitpack.io" }
+    }
+}
+```
+
+2.然后在需要的build.gradle文件中加入依赖
+
+```
+dependencies {
+    compile 'com.github.hujiaweibujidao:wava:1.0.0'
+}
+```
 
 ### License
 
