@@ -5,7 +5,8 @@
 我想写一个很好用的Android动画制作库，具体如何做目前还在思考中 🐈
 
 目前做的最好的Android动画库项目是[@代码家](https://github.com/daimajia)的[AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations)，这个项目真的非常棒。   
-项目`wava`目前只是参考这个项目并对其代码进行修改和改进，后期我将添加更多有意思的功能，请期待下吧，感兴趣可以关注这个项目哈 😜
+项目`wava`目前只是参考这个项目并对其代码进行修改和改进，后期我将添加更多有意思的功能。    
+具体什么功能请大家期待下吧，感兴趣的话可以关注这个项目哈 😜
 
 ### Usage
 
@@ -21,6 +22,27 @@ YoYo.with(technique).duration(1200)
         }
     })
     .playOn(mTarget);
+```
+
+### Setup
+
+1.在项目根目录的build.gradle文件中加入
+
+```
+allprojects {
+    repositories {
+        ...
+        maven { url "https://www.jitpack.io" }
+    }
+}
+```
+
+2.然后在需要的build.gradle文件中加入依赖
+
+```
+dependencies {
+    compile 'com.github.hujiaweibujidao:wava:1.0.0'
+}
 ```
 
 ### Changes 
@@ -186,27 +208,6 @@ public class BounceAnimator extends BaseViewAnimator {
 ```
 
 6.复制了原有的动画演示代码，略有修改，但是保证了效果如初。
-
-### Setup
-
-1.在项目根目录的build.gradle文件中加入
-
-```
-allprojects {
-    repositories {
-        ...
-        maven { url "https://www.jitpack.io" }
-    }
-}
-```
-
-2.然后在需要的build.gradle文件中加入依赖
-
-```
-dependencies {
-    compile 'com.github.hujiaweibujidao:wava:1.0.0'
-}
-```
 
 ### License
 
