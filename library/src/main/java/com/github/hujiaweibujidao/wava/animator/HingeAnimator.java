@@ -24,25 +24,26 @@
 
 package com.github.hujiaweibujidao.wava.animator;
 
-import android.view.View;
+import android.animation.ObjectAnimator;
 
 import com.github.hujiaweibujidao.wava.BaseViewAnimator;
+import com.github.hujiaweibujidao.yava.EasingFunction;
 
 public class HingeAnimator extends BaseViewAnimator {
 
     @Override
     public void prepare() {
-//        float x = mTarget.getPaddingLeft();
-//        float y = mTarget.getPaddingTop();
-//        mAnimatorSet.playTogether(
-//                Glider.glide(Skill.SineEaseInOut, 1300, ObjectAnimator.ofFloat(mTarget, "rotation", 0, 80, 60, 80, 60, 60)),
-//                ObjectAnimator.ofFloat(mTarget, "translationY", 0, 0, 0, 0, 0, 700),
-//                ObjectAnimator.ofFloat(mTarget, "alpha", 1, 1, 1, 1, 1, 0),
-//                ObjectAnimator.ofFloat(mTarget, "pivotX", x, x, x, x, x, x),
-//                ObjectAnimator.ofFloat(mTarget, "pivotY", y, y, y, y, y, y)
-//        );
-//
-//        setDuration(1300);
+        float x = mTarget.getPaddingLeft();
+        float y = mTarget.getPaddingTop();
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mTarget, "rotation", 0, 80, 60, 80, 60, 60);
+        animator.setInterpolator(EasingFunction.SINE_INOUT);
+        mAnimatorSet.playTogether(
+                animator,
+                ObjectAnimator.ofFloat(mTarget, "translationY", 0, 0, 0, 0, 0, 700),
+                ObjectAnimator.ofFloat(mTarget, "alpha", 1, 1, 1, 1, 1, 0),
+                ObjectAnimator.ofFloat(mTarget, "pivotX", x, x, x, x, x, x),
+                ObjectAnimator.ofFloat(mTarget, "pivotY", y, y, y, y, y, y)
+        );
     }
 }
 

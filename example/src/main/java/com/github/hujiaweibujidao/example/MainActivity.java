@@ -30,14 +30,13 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new EffectAdapter(this);
         mListView.setAdapter(mAdapter);
 
-        rope = YoYo.with(Techniques.FadeIn).duration(1000).target(mTarget).play();// after start,just click mTarget view, rope is not init
+        rope = YoYo.with(Techniques.FadeIn).duration(1000).playOn(mTarget);// after start,just click mTarget view, rope is not init
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Techniques technique = (Techniques)view.getTag();
-                rope =  YoYo.with(technique).target(mTarget).duration(1200)
+                rope =  YoYo.with(technique).duration(1200)
                         .interpolate(new AccelerateDecelerateInterpolator())
                         .listen(new AnimatorListenerAdapter() {
                             @Override
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "canceled", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .play();
+                        .playOn(mTarget);
             }
         });
 

@@ -109,13 +109,9 @@ public class YoYo {
             return this;
         }
 
-        public Builder target(View target) {
-            this.target = target;
-            return this;
-        }
-
         //调用play表示动画正式开始，返回结果是可以控制动画的对象YoYoString
-        public YoYoString play() {
+        public YoYoString playOn(View target) {
+            this.target = target;
             start();
             return new YoYoString(this.animator);
         }
