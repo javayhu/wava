@@ -54,7 +54,6 @@ public abstract class BaseViewAnimator {
     public void start() {
         reset();
         prepare();
-
         if (mRepeat != 0) {
             for (Animator animator : mAnimatorSet.getChildAnimations()) {
                 ((ValueAnimator) animator).setRepeatCount(mRepeat > 0 ? mRepeat - 1 : mRepeat);//区别无穷次
@@ -69,7 +68,6 @@ public abstract class BaseViewAnimator {
                 }
             });
         }
-
         mAnimatorSet.start();
     }
 

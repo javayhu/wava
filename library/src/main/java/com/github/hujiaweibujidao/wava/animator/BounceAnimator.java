@@ -29,7 +29,6 @@ import android.animation.ObjectAnimator;
 import com.github.hujiaweibujidao.wava.BaseViewAnimator;
 
 public class BounceAnimator extends BaseViewAnimator {
-
     @Override
     public void prepare() {
         mAnimatorSet.playTogether(

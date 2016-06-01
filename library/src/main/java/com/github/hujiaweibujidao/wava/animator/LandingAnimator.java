@@ -20,8 +20,6 @@ public class LandingAnimator extends BaseViewAnimator {
         animator2.setInterpolator(EasingFunction.QUINT_OUT);
         ObjectAnimator animator3 = ObjectAnimator.ofFloat(mTarget, "alpha", 0, 1f);
         animator3.setInterpolator(EasingFunction.QUINT_OUT);
-
         mAnimatorSet.playTogether(animator1, animator2, animator3);
-
     }
 }
