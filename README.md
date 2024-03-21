@@ -12,6 +12,10 @@ Currently wava is just a library based on AndroidViewAnimations with many update
 
 Later I will try my best to add other fancy new features to wava, star it if you have any interest. 😜
 
+[When Math Meets Animation(1)](https://javayhu.github.io/blog/2016-05-26-when-math-meets-android-animation-1)    
+[When Math Meets Animation(2)](https://javayhu.github.io/blog/2016-05-27-When-Math-meets-Android-Animation-2)     
+[When Math Meets Animation(3)](https://javayhu.github.io/blog/2016-05-28-When-Math-meets-Android-Animation-3)     
+
 ### Sample
 
 ![img](wava.gif)
